@@ -31,17 +31,16 @@
             this.components = new System.ComponentModel.Container();
             this.ddlNetwork = new System.Windows.Forms.ComboBox();
             this.ddlSymbol = new System.Windows.Forms.ComboBox();
-            this.tmrCandleUpdater = new System.Windows.Forms.Timer(this.components);
+            this.tmrUpdater = new System.Windows.Forms.Timer(this.components);
             this.rdoBuy = new System.Windows.Forms.RadioButton();
             this.rdoSell = new System.Windows.Forms.RadioButton();
             this.rdoSwitch = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ddlAutoOrderType = new System.Windows.Forms.ComboBox();
-            this.nudAutoQuantity = new System.Windows.Forms.NumericUpDown();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.nudBoxSize = new System.Windows.Forms.NumericUpDown();
             this.btnAutomatedTrading = new System.Windows.Forms.Button();
-            this.tmrAutoTradeExecution = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAutoQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBoxSize)).BeginInit();
             this.SuspendLayout();
             // 
             // ddlNetwork
@@ -67,10 +66,10 @@
             this.ddlSymbol.TabIndex = 7;
             this.ddlSymbol.SelectedIndexChanged += new System.EventHandler(this.ddlSymbol_SelectedIndexChanged);
             // 
-            // tmrCandleUpdater
+            // tmrUpdater
             // 
-            this.tmrCandleUpdater.Interval = 10000;
-            this.tmrCandleUpdater.Tick += new System.EventHandler(this.tmrCandleUpdater_Tick);
+            this.tmrUpdater.Interval = 5000;
+            this.tmrUpdater.Tick += new System.EventHandler(this.tmrUpdater_Tick);
             // 
             // rdoBuy
             // 
@@ -106,8 +105,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.ddlAutoOrderType);
-            this.groupBox1.Controls.Add(this.nudAutoQuantity);
+            this.groupBox1.Controls.Add(this.txtQty);
+            this.groupBox1.Controls.Add(this.nudBoxSize);
             this.groupBox1.Controls.Add(this.btnAutomatedTrading);
             this.groupBox1.Controls.Add(this.rdoSell);
             this.groupBox1.Controls.Add(this.rdoSwitch);
@@ -119,40 +118,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Automated Trading";
             // 
-            // ddlAutoOrderType
+            // txtQty
             // 
-            this.ddlAutoOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlAutoOrderType.FormattingEnabled = true;
-            this.ddlAutoOrderType.Items.AddRange(new object[] {
-            "Market",
-            "Limit Post Only"});
-            this.ddlAutoOrderType.Location = new System.Drawing.Point(235, 9);
-            this.ddlAutoOrderType.Name = "ddlAutoOrderType";
-            this.ddlAutoOrderType.Size = new System.Drawing.Size(98, 21);
-            this.ddlAutoOrderType.TabIndex = 15;
+            this.txtQty.Location = new System.Drawing.Point(266, 12);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(67, 20);
+            this.txtQty.TabIndex = 16;
             // 
-            // nudAutoQuantity
+            // nudBoxSize
             // 
-            this.nudAutoQuantity.Increment = new decimal(new int[] {
+            this.nudBoxSize.Increment = new decimal(new int[] {
             50,
             0,
             0,
             0});
-            this.nudAutoQuantity.Location = new System.Drawing.Point(266, 43);
-            this.nudAutoQuantity.Maximum = new decimal(new int[] {
+            this.nudBoxSize.Location = new System.Drawing.Point(266, 43);
+            this.nudBoxSize.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.nudAutoQuantity.Minimum = new decimal(new int[] {
+            this.nudBoxSize.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudAutoQuantity.Name = "nudAutoQuantity";
-            this.nudAutoQuantity.Size = new System.Drawing.Size(67, 20);
-            this.nudAutoQuantity.TabIndex = 15;
-            this.nudAutoQuantity.Value = new decimal(new int[] {
+            this.nudBoxSize.Name = "nudBoxSize";
+            this.nudBoxSize.Size = new System.Drawing.Size(67, 20);
+            this.nudBoxSize.TabIndex = 15;
+            this.nudBoxSize.Value = new decimal(new int[] {
             100,
             0,
             0,
@@ -169,11 +163,6 @@
             this.btnAutomatedTrading.UseVisualStyleBackColor = false;
             this.btnAutomatedTrading.Click += new System.EventHandler(this.btnAutomatedTrading_Click);
             // 
-            // tmrAutoTradeExecution
-            // 
-            this.tmrAutoTradeExecution.Interval = 5000;
-            this.tmrAutoTradeExecution.Tick += new System.EventHandler(this.tmrAutoTradeExecution_Tick);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +175,7 @@
             this.Text = "BitMex Simple Bot";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAutoQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudBoxSize)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -194,15 +183,15 @@
         #endregion
         private System.Windows.Forms.ComboBox ddlNetwork;
         private System.Windows.Forms.ComboBox ddlSymbol;
-        private System.Windows.Forms.Timer tmrCandleUpdater;
+        private System.Windows.Forms.Timer tmrUpdater;
         private System.Windows.Forms.RadioButton rdoBuy;
         private System.Windows.Forms.RadioButton rdoSell;
         private System.Windows.Forms.RadioButton rdoSwitch;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnAutomatedTrading;
-        private System.Windows.Forms.ComboBox ddlAutoOrderType;
-        private System.Windows.Forms.NumericUpDown nudAutoQuantity;
-        private System.Windows.Forms.Timer tmrAutoTradeExecution;
+        private System.Windows.Forms.NumericUpDown nudBoxSize;
+        private System.Windows.Forms.TextBox txtQty;
     }
 }
+
 
